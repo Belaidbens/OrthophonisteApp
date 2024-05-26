@@ -1,0 +1,170 @@
+[
+  {
+    "nom": "Belaid",
+    "prenom": "Bens",
+    "adresse": "Bejaia",
+    "mail": "mm_bensaada@esi.dz",
+    "telephone": "0656268495",
+    "motdepasse": "1234567",
+    "patiens": [],
+    "anamneses": [],
+    "tests": [],
+    "holderofanams": {
+      "qsts1": [],
+      "qsts2": [],
+      "nb_ele1": 0,
+      "nb_ele2": 0
+    },
+    "holderofQst": {
+      "qsts": [],
+      "nb_ele": 0
+    },
+    "holderofexo": {
+      "qsts": [],
+      "nb_ele": 0
+    },
+    "agenda": {
+      "jours": {}
+    }
+  },
+  {
+    "nom": "v",
+    "prenom": "c",
+    "adresse": "s",
+    "mail": "s",
+    "telephone": "a",
+    "motdepasse": "z",
+    "patiens": [],
+    "anamneses": [],
+    "tests": [],
+    "holderofanams": {
+      "qsts1": [],
+      "qsts2": [],
+      "nb_ele1": 0,
+      "nb_ele2": 0
+    },
+    "holderofQst": {
+      "qsts": [],
+      "nb_ele": 0
+    },
+    "holderofexo": {
+      "qsts": [],
+      "nb_ele": 0
+    },
+    "agenda": {
+      "jours": {}
+    }
+  },
+  {
+    "nom": "Hmida",
+    "prenom": "El3alamia",
+    "adresse": "wlid Bab el oued",
+    "mail": "le3Lam",
+    "telephone": "00000000",
+    "motdepasse": "piw",
+    "patiens": [],
+    "anamneses": [],
+    "tests": [],
+    "holderofanams": {
+      "qsts1": [],
+      "qsts2": [],
+      "nb_ele1": 0,
+      "nb_ele2": 0
+    },
+    "holderofQst": {
+      "qsts": [],
+      "nb_ele": 0
+    },
+    "holderofexo": {
+      "qsts": [],
+      "nb_ele": 0
+    },
+    "agenda": {
+      "jours": {}
+    }
+  },
+  {
+    "nom": "nnn",
+    "prenom": "ssss",
+    "adresse": "pipi",
+    "mail": "kaka",
+    "telephone": "prouuut",
+    "motdepasse": "qiiw",
+    "patiens": [],
+    "anamneses": [],
+    "tests": [],
+    "holderofanams": {
+      "qsts1": [],
+      "qsts2": [],
+      "nb_ele1": 0,
+      "nb_ele2": 0
+    },
+    "holderofQst": {
+      "qsts": [],
+      "nb_ele": 0
+    },
+    "holderofexo": {
+      "qsts": [],
+      "nb_ele": 0
+    },
+    "agenda": {
+      "jours": {}
+    }
+  },
+  {
+    "nom": "vv",
+    "prenom": "vv",
+    "adresse": "vv",
+    "mail": "vv",
+    "telephone": "vv",
+    "motdepasse": "vv",
+    "patiens": [],
+    "anamneses": [],
+    "tests": [],
+    "holderofanams": {
+      "qsts1": [],
+      "qsts2": [],
+      "nb_ele1": 0,
+      "nb_ele2": 0
+    },
+    "holderofQst": {
+      "qsts": [],
+      "nb_ele": 0
+    },
+    "holderofexo": {
+      "qsts": [],
+      "nb_ele": 0
+    },
+    "agenda": {
+      "jours": {}
+    }
+  },
+  {
+    "nom": "moh",
+    "prenom": "abrk",
+    "adresse": "borj el Bahri",
+    "mail": "llll",
+    "telephone": "dzock",
+    "motdepasse": "kfs nq",
+    "patiens": [],
+    "anamneses": [],
+    "tests": [],
+    "holderofanams": {
+      "qsts1": [],
+      "qsts2": [],
+      "nb_ele1": 0,
+      "nb_ele2": 0
+    },
+    "holderofQst": {
+      "qsts": [],
+      "nb_ele": 0
+    },
+    "holderofexo": {
+      "qsts": [],
+      "nb_ele": 0
+    },
+    "agenda": {
+      "jours": {}
+    }
+  }
+]
