@@ -10,8 +10,8 @@ public class Orthophoniste implements Serializable {
     private String mail;
     private String telephone;
     private String motdepasse;
-    List<Patient> patiens;
-    List<Patient> patiens2;
+    ArrayList<Patient> patiens;
+    ArrayList<Patient> patiens2;
     List<Anamnese> anamneses;
     List<Test> tests;
     private Holder_anam holderofanams;
@@ -31,6 +31,7 @@ public class Orthophoniste implements Serializable {
         this.motdepasse = motdepasse;
         this.agenda = new Agenda();
         this.patiens =new ArrayList<>() ;
+        this.patiens2 =new ArrayList<>() ;
         this.tests= new ArrayList<>();
         this.anamneses= new ArrayList<>();
         this.holderofanams=new Holder_anam();
@@ -42,12 +43,17 @@ public class Orthophoniste implements Serializable {
         Orthophoniste ortho;
         return ortho = new Orthophoniste(nom, prenom, adresse, mail, telephone, motdepasse);
     }
+public List<Anamnese> getAnamneses(){
 
-    public List<Patient> getPatiens() {
+        return this.anamneses;
+}
+
+
+    public ArrayList<Patient> getPatiens() {
         return patiens;
     }
 
-    public List<Patient> getPatiens2() {
+    public ArrayList<Patient> getPatiens2() {
         return patiens2;
     }
     public Holder_anam getHolderofanams(){
@@ -93,42 +99,45 @@ public class Orthophoniste implements Serializable {
     public void ne_prendre_charge(int i) {
         patiens2.remove(i);
     }
-   /* public Rendezvous creer_Consultation(Patient pat,LocalDate date,LocalTime heuredebut,LocalTime heurefin,Anamnese anamnese){
+    public Rendezvous creer_Consultation(Patient pat,LocalDate date,LocalTime heuredebut,LocalTime heurefin,Anamnese anamnese){
         Rendezvous ren;
             ren = new Consultation(heuredebut,heurefin,pat.getNom(),pat.getPrenom(),pat.getAge(),anamnese); //a changer
             Dossier doc = new Dossier(ren );
+        pat.SetDoc(doc);
            if(programmerRendezvous(date, ren)){
-
+if(patiens2==null){
+    patiens2=new ArrayList<>();
+}
                patiens2.add(pat);
            }else{
                ren=null;
            }
 
 
-            pat.SetDoc(doc);
-            patiens2.add(pat);
-        }else{
-            try {
-                TYPERDV derou = null;
-                int i = pat.getDoc().getNumero();
-                ren = new Suivi(heuredebut,heurefin,derou);//a changer
-                if(programmerRendezvous(date,ren)) {
-                    patiens.get(i).getDoc().addRendezVous(ren);
-                    BilanOrthophonique bo = this.createBo();
-                    pat.getDoc().addBilan(bo);
-                }else {
-                    ren=null;;
-                }
 
-            }
-            catch(ZeroTests e) {
-                //changed here
-                System.out.println("the RDV creation failed, there is no test to create a new BO ,try to create tests before organasing a new RDV");
-                ren = null;
-            }
-        }
+
+//        }else{
+//            try {
+//                TYPERDV derou = null;
+//                int i = pat.getDoc().getNumero();
+//                ren = new Suivi(heuredebut,heurefin,derou);//a changer
+//                if(programmerRendezvous(date,ren)) {
+//                    patiens.get(i).getDoc().addRendezVous(ren);
+//                    BilanOrthophonique bo = this.createBo();
+//                    pat.getDoc().addBilan(bo);
+//                }else {
+//                    ren=null;;
+//                }
+//
+//            }
+//            catch(ZeroTests e) {
+//                //changed here
+//                System.out.println("the RDV creation failed, there is no test to create a new BO ,try to create tests before organasing a new RDV");
+//                ren = null;
+//            }
+        //}
         return ren;
-    }*/
+    }
 
 
     private BilanOrthophonique createBo() throws ZeroTests {

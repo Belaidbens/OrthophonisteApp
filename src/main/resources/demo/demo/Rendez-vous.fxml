@@ -99,7 +99,7 @@
                <children>
                   <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
                      <children>
-                        <DatePicker />
+                        <DatePicker fx:id="dt" />
                      </children>
                   </VBox>
                </children>
@@ -119,7 +119,7 @@
                         </HBox>
                         <HBox alignment="CENTER_LEFT" prefHeight="51.0" prefWidth="296.0">
                            <children>
-                              <TextField prefHeight="30.0" prefWidth="126.0" promptText="heure" />
+                              <TextField fx:id="hd" prefHeight="30.0" prefWidth="126.0" promptText="heure" />
                            </children>
                         </HBox>
                      </children>
@@ -141,7 +141,7 @@
                         </HBox>
                         <HBox alignment="CENTER_LEFT" prefHeight="43.0" prefWidth="277.0">
                            <children>
-                              <TextField prefHeight="30.0" prefWidth="126.0" promptText="minute" />
+                              <TextField fx:id="md" prefHeight="30.0" prefWidth="126.0" promptText="minute" />
                            </children>
                         </HBox>
                      </children>
@@ -154,7 +154,7 @@
                      <children>
                         <HBox alignment="CENTER" prefHeight="47.0" prefWidth="116.0">
                            <children>
-                              <Label text="DureeH : ">
+                              <Label text="finH : ">
                                  <font>
                                     <Font name="Poppins Italic" size="15.0" />
                                  </font>
@@ -163,7 +163,7 @@
                         </HBox>
                         <HBox alignment="CENTER_LEFT" prefHeight="47.0" prefWidth="286.0">
                            <children>
-                              <TextField prefHeight="30.0" prefWidth="126.0" promptText="heure" />
+                              <TextField fx:id="hf" prefHeight="30.0" prefWidth="126.0" promptText="heure" />
                            </children>
                         </HBox>
                      </children>
@@ -176,7 +176,7 @@
                      <children>
                         <HBox alignment="CENTER" prefHeight="49.0" prefWidth="114.0">
                            <children>
-                              <Label text="DureeM : ">
+                              <Label text="finM : ">
                                  <font>
                                     <Font name="Poppins Italic" size="15.0" />
                                  </font>
@@ -185,7 +185,7 @@
                         </HBox>
                         <HBox alignment="CENTER_LEFT" prefHeight="49.0" prefWidth="287.0">
                            <children>
-                              <TextField prefHeight="30.0" prefWidth="126.0" promptText="minute" />
+                              <TextField fx:id="mf" prefHeight="30.0" prefWidth="126.0" promptText="minute" />
                            </children>
                         </HBox>
                      </children>

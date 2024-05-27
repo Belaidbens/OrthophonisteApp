@@ -1,18 +1,16 @@
 package demo.demo;
+
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
-import javafx.event.ActionEvent;
-
-import javafx.fxml.FXML;
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.ComboBox;
+import javafx.scene.control.DatePicker;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import models.models.*;
 
@@ -24,34 +22,64 @@ import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
-public class suiviController {
-
-    @FXML
-    private ComboBox<String> myType;
-
-    // Méthode d'initialisation appelée après que le fichier FXML a été chargé
-    @FXML
-    private void initialize() {
-        // Ajoutez les éléments à la ComboBox
-        myType.getItems().addAll("En Ligne", "Présentiel");
-    }
-    Orthophoniste ortho;
+public class consultationEnfantController {
+    private Orthophoniste ortho;
 
     public void setOrtho(Orthophoniste ortho) {
         this.ortho = ortho;
     }
-    // Méthode pour gérer l'événement de changement de scène
+
     @FXML
-    private void handleChangeScene(ActionEvent event) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("")); // Remplacez "nextScene.fxml" par le nom de votre fichier FXML cible
-            Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
-            Scene scene = new Scene(loader.load());
-            stage.setScene(scene);
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    private TextField name;
+    @FXML
+    private TextField surname;
+    @FXML
+    private TextField tel;
+    @FXML
+    private TextField lN;
+    @FXML
+    private TextField adr;
+    @FXML
+    private TextField prof;
+    @FXML
+    private TextField dip;
+    @FXML
+    private DatePicker dN;
+
+    private String hd;
+    private String md;
+    private String hf;
+    private String mf;
+    private LocalDate dt;
+
+    // Setter for dt
+    public void setDt(LocalDate dt) {
+        this.dt = dt;
+    }
+
+    // Setter for hd
+    public void setHd(String hd) {
+        this.hd = hd;
+    }
+
+    // Setter for md
+    public void setMd(String md) {
+        this.md = md;
+    }
+
+    // Setter for hf
+    public void setHf(String hf) {
+        this.hf = hf;
+    }
+
+    // Setter for mf
+    public void setMf(String mf) {
+        this.mf = mf;
+    }
+
+    // Method to retrieve and set the LocalDate from DatePicker dN
+    public void initialize() {
+        dN.valueProperty().addListener((observable, oldValue, newValue) -> setDt(newValue));
     }
     Gson gson;
     private ArrayList<Orthophoniste> orthos=new ArrayList<Orthophoniste>();

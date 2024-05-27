@@ -2,6 +2,7 @@ package demo.demo;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.reflect.TypeToken;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -16,6 +17,7 @@ import javafx.stage.Stage;
 
 import models.models.*;
 
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URL;
@@ -23,6 +25,7 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class questionanamController implements Initializable {
@@ -145,34 +148,54 @@ public class questionanamController implements Initializable {
             e.printStackTrace();
         }
     }
-    public void HandleDisConnect(ActionEvent event){
+    Gson gson;
+
+    private void loadUsers() {
+        try (FileReader reader = new FileReader("C:\\Users\\hp\\OneDrive\\Documents\\demo\\src\\main\\java\\demo\\demo\\people.json")) {
+            java.lang.reflect.Type userListType = new TypeToken<List<Orthophoniste>>() {}.getType();
+
+            orthos = gson.fromJson(reader,userListType );
+            //orthos.add(ortho);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    public void HandleDisConnect(ActionEvent event) {
+        int i = -1; // Initialize index to -1
         GsonBuilder gsonBuilder = new GsonBuilder();
-        gsonBuilder.registerTypeAdapter(LocalDate .class, new LocalDateSerializer());
+        gsonBuilder.registerTypeAdapter(LocalDate.class, new LocalDateSerializer());
         gsonBuilder.registerTypeAdapter(LocalDate.class, new LocalDateDeserializer());
-        gsonBuilder.registerTypeAdapter(LocalTime .class, new LocalTimeSerializer());
+        gsonBuilder.registerTypeAdapter(LocalTime.class, new LocalTimeSerializer());
         gsonBuilder.registerTypeAdapter(LocalTime.class, new LocalTimeDeserializer());
-         Gson gson = gsonBuilder.create();
-        int i = 0;
-        for(Orthophoniste orthoo : orthos){
-            if (orthoo.getMotdepasse()==ortho.getMotdepasse() && orthoo.getMail()==ortho.getMail()){
-                i=orthos.indexOf(orthoo);
+        gson = gsonBuilder.create();
+        loadUsers();
+
+        // Find the index of the current ortho in the list
+        for (Orthophoniste orthoo : orthos) {
+            if (orthoo.getMotdepasse().equals(ortho.getMotdepasse()) && orthoo.getMail().equals(ortho.getMail())) {
+                i = orthos.indexOf(orthoo);
                 break;
             }
         }
-        orthos.add(i,ortho);
-        try (FileWriter writer = new FileWriter("C:\\Users\\hp\\OneDrive\\Documents\\demo\\src\\main\\java\\demo\\demo\\people.json")) {
 
+        // If ortho is found, remove it before adding the new one
+        if (i != -1) {
+            orthos.remove(i);
+        }
+
+        // Add the disconnected ortho at the beginning of the list
+        orthos.add(0, ortho);
+
+        try (FileWriter writer = new FileWriter("C:\\Users\\hp\\OneDrive\\Documents\\demo\\src\\main\\java\\demo\\demo\\people.json")) {
             gson.toJson(orthos, writer);
         } catch (IOException e) {
             e.printStackTrace();
         }
+
         try {
             // Load the second page
             FXMLLoader loader = new FXMLLoader(getClass().getResource("Login.fxml"));
             Parent root = loader.load();
-            //anamtestController test=loader.getController();
-            // test.setOrtho(ortho);
-
 
             // Get the current stage
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -183,6 +206,5 @@ public class questionanamController implements Initializable {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
     }
 }
