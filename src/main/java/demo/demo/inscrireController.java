@@ -91,6 +91,9 @@ public class inscrireController {
             Type userListType = new TypeToken<List<Orthophoniste>>() {}.getType();
 
             orthos = gson.fromJson(reader, userListType);
+           if(orthos==null) {
+               orthos=new ArrayList<Orthophoniste>();
+           }
 
 
         } catch (IOException e) {

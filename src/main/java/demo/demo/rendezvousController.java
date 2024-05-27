@@ -23,9 +23,6 @@ public class rendezvousController {
     private void initialize() {
         // Ajoutez les éléments à la ComboBox
         myComboboxType.getItems().addAll("Consultation","Seance De Suivi" ,"Atelier De Groupe");
-
-
-
     }
     @FXML
     private void GoToChoixType(ActionEvent event) {

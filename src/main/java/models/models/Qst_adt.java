@@ -8,9 +8,4 @@ public class Qst_adt extends Qst_anam {
         super(input);
         this.cat =cat;
     }
-    public String toString(){
-        return cat.toString();
-    }
-
-
 }

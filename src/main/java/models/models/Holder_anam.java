@@ -3,11 +3,18 @@ package models.models;
 import java.util.ArrayList;
 
 public class Holder_anam {
-    public ArrayList<Qst_adt> qsts1 = new ArrayList<>();
+    private ArrayList<Qst_adt> qsts1 = new ArrayList<>();
     private ArrayList<Qst_enft> qsts2 = new ArrayList<>();
     private int nb_ele1;
     private int nb_ele2;
-    public void add_qst(Qst_anam qst,Type type) {
+    public ArrayList<Qst_adt> getQsts1(){
+        return qsts1;
+    }
+    public ArrayList<Qst_enft> getQsts2() {
+        return qsts2;
+    }
+
+    public void add_qst(Qst_anam qst, Type type) {
         switch(type) {
             case ADULTE:
                 qsts1.add((Qst_adt) qst);

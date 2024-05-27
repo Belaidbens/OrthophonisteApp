@@ -14,7 +14,7 @@ public class Orthophoniste implements Serializable {
     List<Patient> patiens2;
     List<Anamnese> anamneses;
     List<Test> tests;
-    public Holder_anam holderofanams;
+    private Holder_anam holderofanams;
     private Holder_Qst holderofQst;
     private Holder_Exo holderofexo;
 
@@ -50,6 +50,9 @@ public class Orthophoniste implements Serializable {
     public List<Patient> getPatiens2() {
         return patiens2;
     }
+    public Holder_anam getHolderofanams(){
+        return holderofanams;
+    }
     public String toString(){
         return nom +" "+ prenom;
     }
@@ -69,18 +72,10 @@ public class Orthophoniste implements Serializable {
     }
 
 
-    public Anamnese create_Amn() {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("give the type of the anamnese you want to create : ");
-        System.out.println("Type1 :anamnese of Adulte");
-        System.out.println("Type2 :anamnese of Child");
-        int num = scanner.nextInt();
-
-        Type type = Type.values()[num - 1];
-        ;
+    public Anamnese create_Amn(Type type,ArrayList<Qst_anam> quest) {
 
         if (holderofanams.taille(type) != 0) {
-            Anamnese amn = new Anamnese(holderofanams, type);
+            Anamnese amn = new Anamnese(quest, type);
             anamneses.add(amn);
             return amn;
         } else {
@@ -98,38 +93,12 @@ public class Orthophoniste implements Serializable {
     public void ne_prendre_charge(int i) {
         patiens2.remove(i);
     }
-    public Rendezvous creer_RDV(Patient pat){
+   /* public Rendezvous creer_Consultation(Patient pat,LocalDate date,LocalTime heuredebut,LocalTime heurefin,Anamnese anamnese){
         Rendezvous ren;
-        LocalDate date=null;
-        LocalTime heuredebut= null;// a changer
-        LocalTime heurefin=null;
-        if(pat == null){
-            Type type = null;
-            String nom = null;
-            String prenom = null;
-            String adr = null;
-            LocalDate Date = null;
-            String placeN =  null;
-            String mail =null;
-            switch (type) {
-                case ADULTE:
-                    String tel = null;
-                    String pro = null;
-                    String Dip = null;
-                    pat = new Adulte(nom, prenom, Date, adr,tel,mail,placeN , Dip,pro);
-                    break;
-                    default:
-                    String Telm = null;
-                    String Telp = null;
-                    String Clasd = null;
-                    pat = new Enfant(nom,prenom, Date, adr,Telp,mail,placeN, Clasd, Telm );
-                    break;
-            }
-            ren = new Consultation(heuredebut,heurefin,pat.getNom(),pat.getPrenom(),pat.getAge(),create_Amn()); //a changer
+            ren = new Consultation(heuredebut,heurefin,pat.getNom(),pat.getPrenom(),pat.getAge(),anamnese); //a changer
             Dossier doc = new Dossier(ren );
-
-            //ajout ll agenda (   )
            if(programmerRendezvous(date, ren)){
+
                patiens2.add(pat);
            }else{
                ren=null;
@@ -159,7 +128,7 @@ public class Orthophoniste implements Serializable {
             }
         }
         return ren;
-    }
+    }*/
 
 
     private BilanOrthophonique createBo() throws ZeroTests {
@@ -220,35 +189,16 @@ public class Orthophoniste implements Serializable {
             return null;
         }
     }
-    private Qst_anam Create_Qst_Anam(String enoncé, Type type) {
-        Scanner scanner = new Scanner(System.in);
+    private Qst_anam Create_Qst_Anam(String enoncé, Type type,int i) {
+
 
         switch (type) {
             case ADULTE:
-                System.out.println("what is the category of the question ?");
-
-                for (CategAdulte cat : CategAdulte.values()) { //printing the values of the enum
-                    System.out.println(cat);
-                }
-
-                int i = scanner.nextInt();
 
                 Qst_adt Qst1 = new Qst_adt(enoncé, CategAdulte.values()[i]);
                 return Qst1;
             case ENFANT:
-
-                System.out.println("what is the category of the question ?");
-
-
-                for (CategEnfant cat : CategEnfant.values()) { //printing the values of the enum
-                    System.out.println(cat);
-                }
-
-
-                int j = scanner.nextInt();
-
-                Qst_adt Qst2 = new Qst_adt(enoncé, CategAdulte.values()[j]);
-
+                Qst_enft Qst2 = new Qst_enft(enoncé, CategEnfant.values()[i]);
 
                 return Qst2;
 
@@ -260,18 +210,8 @@ public class Orthophoniste implements Serializable {
     }
 
 
-    public void AddQstToHoldAnam() {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("give the type of the question you want to add : ");
-        System.out.println("Type1 : Adulte");
-        System.out.println("Type2 : Enfant");
-        Type type;
-        int num = scanner.nextInt();
-        type = Type.values()[num-1]; ;
-        System.out.println("give the question you want to add : ");
-        String input = scanner.nextLine();
-        Qst_anam qst= Create_Qst_Anam(input,type);
-        this.holderofanams.add_qst(qst, type);
+    public void AddQstToHoldAnam(String enonce,Type type,int i) {
+        this.holderofanams.add_qst(Create_Qst_Anam(enonce,type,i), type);
     }
 
 
@@ -311,7 +251,7 @@ public class Orthophoniste implements Serializable {
         return null;
     }
 
-    public void AddQstToHoldQstNorm() {
+    public void AddQstToHoldQstNorm(String text, Type typee) {
 
         Scanner scanner = new Scanner(System.in);
         System.out.println("give the type of the  question you want to add : ");

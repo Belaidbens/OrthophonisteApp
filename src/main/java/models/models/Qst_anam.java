@@ -8,6 +8,7 @@ public class Qst_anam {
         this.eno=input;
 
     }
+
     public String toString() {
         return eno;
     }

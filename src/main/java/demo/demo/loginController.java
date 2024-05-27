@@ -99,7 +99,6 @@ public class loginController {
                 private void loadUsers() {
                         try (FileReader reader = new FileReader("C:\\Users\\hp\\OneDrive\\Documents\\demo\\src\\main\\java\\demo\\demo\\people.json")) {
                                 Type userListType = new TypeToken<List<Orthophoniste>>() {}.getType();
-
                                  orthos = gson.fromJson(reader,userListType );
                                //orthos.add(ortho);
 
