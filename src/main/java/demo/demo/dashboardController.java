@@ -37,8 +37,6 @@ public class dashboardController {
             Parent root = loader.load();
             rendezvousController list = loader.getController();
             list.setOrtho(ortho);
-
-
             // Get the current stage
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             // Set the new scene
